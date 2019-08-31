@@ -15,8 +15,11 @@ RUN cd /highlights \
     && git clone https://github.com/perl6/atom-language-perl6 \
     && npm install .;
 
-RUN zef install "Perl6::Documentable:ver<3.0.0>" \
+RUN zef install "Documentable:ver<1.0.0+>" \
     && mkdir /documentable
+
+RUN apk del linux-headers openssl-dev && \
+    rm -rf /var/cache/apk/*
 
 WORKDIR /documentable
 
